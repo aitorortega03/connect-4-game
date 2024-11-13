@@ -1,16 +1,16 @@
+import { useState } from "react"
+import { Board, Player } from "./types"
+import { Header } from "./components/Header"
 
 const App = () => {
+  const [board, setBoard] = useState<Board>(Array(6).fill(null).map(() => Array(7).fill(null)))
+  const [currentPlayer, setCurrentPlayer] = useState<Extract<Player, 'red' | 'yellow'>>('red')
+  const [winner, setWinner] = useState<Player>(null)
+  const [gameOver, setGameOver] = useState<boolean>(false)
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-blue-100">
-      <div className="text-center mb-8">
-        <h1 className="text-5xl font-bold text-blue-600 mb-2 tracking-wider">
-          CONNECT 4 GAME
-        </h1>
-        <p className="text-blue-500 text-lg italic">
-          Connect four tiles to win!
-        </p>
-      </div>
+      <Header />
     </div>
   )
 }
