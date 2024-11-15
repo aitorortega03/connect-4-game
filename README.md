@@ -66,6 +66,10 @@ yarn dev
    - Vertical
    - Diagonal
 
+## 🌐 Live Demo
+
+Experience the game live at: [https://connect-4-game-aitorortegadev.netlify.app/](https://connect-4-game-aitorortegadev.netlify.app/)
+
 ## 🏗️ Project Structure
 
 ```
