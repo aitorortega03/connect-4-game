@@ -73,7 +73,7 @@ Experience the game live at: [https://connect-4-game-aitorortegadev.netlify.app/
 ## 🏗️ Project Structure
 
 ```
-connect4-react/
+connect-4-game/
 ├── src/
 │   ├── components/
 │   │   ├── Board.tsx
