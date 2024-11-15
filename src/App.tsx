@@ -4,6 +4,7 @@ import { Header } from "./components/Header"
 import { GameBoard } from "./components/Board"
 import { GameStatus } from "./components/GameStatus"
 import { checkWinner } from "./utils/utils"
+import { ResetButton } from "./components/ResetButton"
 
 const App = () => {
   const [board, setBoard] = useState<Board>(Array(6).fill(null).map(() => Array(7).fill(null)))
@@ -17,27 +18,35 @@ const App = () => {
       setWinner(result)
       setGameOver(true)
     }
-  }, [board]);
+  }, [board])
 
-  const handleColumnClick = (colIndex: number) => {
+  const handleColumnClick = (colIndex: number): void => {
     if (gameOver) return;
 
     const newBoard = [...board];
     for (let row = 5; row >= 0; row--) {
       if (!newBoard[row][colIndex]) {
-        newBoard[row][colIndex] = currentPlayer;
-        setBoard(newBoard);
-        setCurrentPlayer(currentPlayer === 'red' ? 'yellow' : 'red');
+        newBoard[row][colIndex] = currentPlayer
+        setBoard(newBoard)
+        setCurrentPlayer(currentPlayer === 'red' ? 'yellow' : 'red')
         break;
       }
     }
-  };
+  }
+
+  const resetGame = (): void => {
+    setBoard(Array(6).fill(null).map(() => Array(7).fill(null)))
+    setCurrentPlayer('red')
+    setWinner(null)
+    setGameOver(false)
+  }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-blue-100">
       <Header />
       <GameStatus winner={winner} currentPlayer={currentPlayer} />
       <GameBoard board={board} handleColumnClick={handleColumnClick}/>
+      <ResetButton resetGame={resetGame}/>
     </div>
   )
 }
